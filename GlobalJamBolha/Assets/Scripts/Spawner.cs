@@ -60,10 +60,10 @@ public class Spawner : MonoBehaviour
             float currentSpawnIntervalMin = Mathf.Lerp(spawnIntervalMin, spawnIntervalMax, invertedNormalizedDistance);
             var spawnInterval = Random.Range(currentSpawnIntervalMin, spawnIntervalMax);
 
-            Debug.Log($"current maximum spawn amount: {currentSpawnAmountMax};" +
+            /*Debug.Log($"current maximum spawn amount: {currentSpawnAmountMax};" +
                 $" spawned amount: {amountToSpawn};" +
                 $" minimum spawn interval: {currentSpawnIntervalMin};" +
-                $" spawn interval: {spawnInterval}");
+                $" spawn interval: {spawnInterval}");*/
 
             yield return new WaitForSeconds(spawnInterval);
         }

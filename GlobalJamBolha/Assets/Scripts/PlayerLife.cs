@@ -33,7 +33,13 @@ namespace Assets.Scripts
         {
             currentHealth = maxHealth;
             //waitForInvulnerability = new(invulnerabilityTime);
-            OnPlayerDeath += () => CurePlayer(3);
+            OnPlayerDeath += ResetGame;
+        }
+
+        private void ResetGame()
+        {
+            CurePlayer(maxHealth);
+            PoolManager.Instance.DeactivateAllObjects();
         }
 
         public void DamagePlayer(int damageAmount)

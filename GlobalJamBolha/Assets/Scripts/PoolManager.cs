@@ -25,6 +25,14 @@ public class PoolManager : MonoBehaviour
 
     private Dictionary<string, List<GameObject>> objectPools = new();
 
+    public void DeactivateAllObjects()
+    {
+        foreach (var pool in objectPools.Values)
+        {
+            foreach (var obj in pool) obj.SetActive(false);
+        }
+    }
+
     public GameObject InstantiateFromPool(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         string poolKey = prefab.name;

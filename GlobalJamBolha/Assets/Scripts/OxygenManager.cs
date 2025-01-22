@@ -5,7 +5,8 @@ public class OxygenManager : MonoBehaviour
 {
     [SerializeField] private PlayerLife playerLife;
     private float currentOxygen;
-    [SerializeField] private float fullOxygen = 100;
+    private float CurrentOxygen { get => currentOxygen; set { currentOxygen = Mathf.Clamp(value, 0, fullOxygen); } }
+    [SerializeField] private float fullOxygen = 10;
     [SerializeField] private int oxygenDamage = 1;
     [SerializeField] private float oxygenConsumptionSpeed = 1.5f;
 
@@ -13,21 +14,27 @@ public class OxygenManager : MonoBehaviour
 
     private void Start()
     {
-        currentOxygen = fullOxygen;
+        CurrentOxygen = fullOxygen;
+        playerLife.OnPlayerDeath += RecoverOxygen;
     }
 
     private void Update()
     {
-        currentOxygen -= Time.deltaTime * oxygenConsumptionSpeed;
-        if (currentOxygen < 0) 
+        CurrentOxygen -= Time.deltaTime * oxygenConsumptionSpeed;
+        if (CurrentOxygen < 0) 
         {
             playerLife.DamagePlayer(oxygenDamage);
-            currentOxygen = fullOxygen;
+            CurrentOxygen = fullOxygen;
         }
-        oxygenHUD_IMG.fillAmount = Mathf.Clamp01(currentOxygen / fullOxygen);
+        oxygenHUD_IMG.fillAmount = Mathf.Clamp01(CurrentOxygen / fullOxygen);
+
+        if (Input.GetKeyDown(KeyCode.P)) RecoverOxygen(fullOxygen);
+        if (Input.GetKeyDown(KeyCode.O)) playerLife.CurePlayer(200);
     }
 
-    public void RecoverOxygen(float oxygenAmount) => currentOxygen += oxygenAmount;
+    public void RecoverOxygen() => CurrentOxygen = fullOxygen;
 
-    public void DecreaseOxygen(float oxygenAmount) => currentOxygen -= oxygenAmount;
+    public void RecoverOxygen(float oxygenAmount) => CurrentOxygen += oxygenAmount;
+
+    public void DecreaseOxygen(float oxygenAmount) => CurrentOxygen -= oxygenAmount;
 }

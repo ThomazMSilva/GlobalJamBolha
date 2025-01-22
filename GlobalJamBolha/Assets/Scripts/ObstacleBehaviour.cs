@@ -15,7 +15,7 @@ public class ObstacleBehaviour : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate((progressSpeedWithDistanceRan ? progressionManager.ProgressionMultiplier : 1) * speed * Time.deltaTime * -Vector3.right);
+        transform.Translate((progressSpeedWithDistanceRan ? progressionManager.ProgressionMultiplier : 1) * (progressionManager.BaseMPS * speed) * Time.deltaTime * -Vector3.right);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +24,6 @@ public class ObstacleBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player")) 
         {
-            Debug.Log("Colodiu com jogrfoi");
             if (!other.TryGetComponent<PlayerLife>(out PlayerLife playerLife)) return;
 
             playerLife.DamagePlayer(damage);
