@@ -7,9 +7,15 @@ public class ObstacleBehaviour : MonoBehaviour
 
     [SerializeField] private int damage;
 
+    [SerializeField] private bool progressSpeedWithDistanceRan = true;
+
+    private ProgressionManager progressionManager;
+
+    private void Start() => progressionManager = FindAnyObjectByType<ProgressionManager>();
+
     private void Update()
     {
-        transform.Translate(-Vector3.right * speed * Time.deltaTime);
+        transform.Translate((progressSpeedWithDistanceRan ? progressionManager.ProgressionMultiplier : 1) * speed * Time.deltaTime * -Vector3.right);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +28,8 @@ public class ObstacleBehaviour : MonoBehaviour
             if (!other.TryGetComponent<PlayerLife>(out PlayerLife playerLife)) return;
 
             playerLife.DamagePlayer(damage);
+         
+            gameObject.SetActive(false);
         }
     }
 }

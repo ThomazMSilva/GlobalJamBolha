@@ -61,6 +61,8 @@ namespace Assets.Scripts
             GetComponent<SpriteRenderer>().color = Color.white;
 
             isInvulnerable = false;
+
+            inInvulnerability = null;
         }
     }
 }
