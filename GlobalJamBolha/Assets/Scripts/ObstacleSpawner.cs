@@ -36,6 +36,8 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
+            while (progressionManager.DistanceRan < 100) yield return null;
+
             currentSpawnAmountMax = Mathf.Clamp
                 (
                     (int)(progressionManager.NormalizedDistance * allTimeSpawnAmountMax),
@@ -104,7 +106,6 @@ public class ObstacleSpawner : MonoBehaviour
     private GameObject GetWeightedRandomPrefab()
     {
         int weightedRandom = (int)((m_Prefabs.Length - 1) * TriangularDistribution(0, progressionManager.NormalizedDistance, 1));
-        Debug.Log(weightedRandom);
 
         return m_Prefabs[weightedRandom];
     }

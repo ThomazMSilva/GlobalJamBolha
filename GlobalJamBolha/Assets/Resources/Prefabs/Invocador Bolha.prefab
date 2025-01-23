@@ -125,7 +125,7 @@ MonoBehaviour:
   minSpawnInterval: 3
   maxSpawnInterval: 9
   minSpawnRange: 0.3
-  maxSpawnRange: 5
+  maxSpawnRange: 1.7
   minSpawnAmount: 1
   maxSpawnAmount: 3
 --- !u!1 &7127649548956776500

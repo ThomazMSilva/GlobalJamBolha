@@ -21,7 +21,8 @@ public class PlayerBehaviour : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private readonly float speedMultiplier = 10f;
-    
+
+
     //So pra ler no modo Debug
     private Vector3 velocity;
 

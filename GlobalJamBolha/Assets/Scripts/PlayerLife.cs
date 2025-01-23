@@ -12,6 +12,7 @@ namespace Assets.Scripts
         [SerializeField] private float invulnerabilityTime = 1.5f;
         //private WaitForSeconds waitForInvulnerability;
         private Coroutine inInvulnerability;
+        [SerializeField] private Animator playerAnim;
 
 
         public int CurrentHealth
@@ -59,7 +60,7 @@ namespace Assets.Scripts
         private IEnumerator InvulnerabilityTime()
         {
             isInvulnerable = true;
-
+            playerAnim.SetBool("isStunned", true);
             GetComponent<SpriteRenderer>().color = Color.magenta;
 
             yield return new WaitForSeconds(invulnerabilityTime);
@@ -67,6 +68,8 @@ namespace Assets.Scripts
             GetComponent<SpriteRenderer>().color = Color.white;
 
             isInvulnerable = false;
+
+            playerAnim.SetBool("isStunned", false);
 
             inInvulnerability = null;
         }

@@ -79,6 +79,7 @@ namespace Assets.Scripts
                                 break;
                             }
                         }
+                        yield return null;
                     }
                     while (!validPosition);
 

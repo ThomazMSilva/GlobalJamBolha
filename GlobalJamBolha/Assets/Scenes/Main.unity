@@ -3495,6 +3495,7 @@ GameObject:
   - component: {fileID: 1173182354}
   - component: {fileID: 1173182358}
   - component: {fileID: 1173182359}
+  - component: {fileID: 1173182360}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Player
@@ -3654,6 +3655,7 @@ MonoBehaviour:
   currentHealth: 3
   isInvulnerable: 0
   invulnerabilityTime: 1.5
+  playerAnim: {fileID: 1173182360}
 --- !u!114 &1173182359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3671,6 +3673,27 @@ MonoBehaviour:
   oxygenDamage: 1
   oxygenConsumptionSpeed: 1.5
   oxygenHUD_IMG: {fileID: 738831574}
+--- !u!95 &1173182360
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173182352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9036106fefe844f4190d298a166546cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1225478297
 GameObject:
   m_ObjectHideFlags: 0
