@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4569839573843385933}
   - component: {fileID: -8941463230548936436}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Bolha 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e874d56cbb450458f492d97167d1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVerticalVelocity: 0.8
+  minVerticalVelocity: 1
   maxVerticalVelocity: 1.2
-  minBaseHorizontalVelocity: 0.7
-  maxBaseHorizontalVelocity: 1.1
+  minBaseHorizontalVelocity: 1
+  maxBaseHorizontalVelocity: 1.2
   oxygenRecovered: 25
   minLifetime: 2
   maxLifetime: 5

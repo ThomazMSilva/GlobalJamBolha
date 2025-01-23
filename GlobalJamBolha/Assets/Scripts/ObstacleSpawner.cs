@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_Prefabs;
     [SerializeField] private Transform spawnXPosition;
@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
     private float spawnYTop;
     private float spawnYBottom;
 
-    private Coroutine spawnRoutine;
+    //private Coroutine spawnRoutine;
 
     private ProgressionManager progressionManager;
 
@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour
         spawnYTop = transform.position.y + spawnPositionYRange;
         spawnYBottom = transform.position.y - spawnPositionYRange;
 
-        spawnRoutine = StartCoroutine(Spawn());
+        /*spawnRoutine = */StartCoroutine(Spawn());
     }
 
     private IEnumerator Spawn()
@@ -60,40 +60,64 @@ public class Spawner : MonoBehaviour
             float currentSpawnIntervalMin = Mathf.Lerp(spawnIntervalMin, spawnIntervalMax, invertedNormalizedDistance);
             var spawnInterval = Random.Range(currentSpawnIntervalMin, spawnIntervalMax);
 
-            /*Debug.Log($"current maximum spawn amount: {currentSpawnAmountMax};" +
-                $" spawned amount: {amountToSpawn};" +
-                $" minimum spawn interval: {currentSpawnIntervalMin};" +
-                $" spawn interval: {spawnInterval}");*/
-
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    private GameObject GetWeightedRandomPrefab()
+    /*private GameObject GetWeightedRandomPrefab()
     {
         float progression = progressionManager.NormalizedDistance;
         float totalWeight = 0f;
 
         float[] weights = new float[m_Prefabs.Length];
+        
+            string weightsStr = "";
+
         for (int i = 0; i < m_Prefabs.Length; i++)
         {
-            weights[i] = Mathf.Lerp(1f - progression, progression, (float)i / (m_Prefabs.Length - 1));
+            weights[i] = Mathf.Pow(1 - Mathf.Abs((float)i / (m_Prefabs.Length - 1) - progression), 2);
+            //weights[i] = Mathf.Lerp(1f - progression, progression, (float)i / (m_Prefabs.Length - 1));
+            weightsStr += $"weight {i}: {weights[i]}\n";
             totalWeight += weights[i];
         }
 
         float randomValue = Random.Range(0, totalWeight);
 
         float cumulativeWeight = 0f;
-        
+        string cumWeight = "Cumulative Weights:\n";
+
         for (int i = 0; i < m_Prefabs.Length; i++)
         {
             cumulativeWeight += weights[i];
+            cumWeight += cumulativeWeight+"\n";
             if (randomValue <= cumulativeWeight)
             {
+                Debug.Log($"total weight: {totalWeight}; random value: {randomValue};\n{weightsStr};\n\n{cumWeight}\nspawned {i}");
                 return m_Prefabs[i];
             }
         }
 
+        
         return m_Prefabs[0];
+    }*/
+    
+    private GameObject GetWeightedRandomPrefab()
+    {
+        int weightedRandom = (int)((m_Prefabs.Length - 1) * TriangularDistribution(0, progressionManager.NormalizedDistance, 1));
+        Debug.Log(weightedRandom);
+
+        return m_Prefabs[weightedRandom];
+    }
+
+
+    //roubei da internet u/GroZZleR
+    public static float TriangularDistribution(float minimum = 0f, float peak = 0.5f, float maximum = 1f)
+    {
+        float v = Random.value;
+
+        if (v < (peak - minimum) / (maximum - minimum))
+            return minimum + Mathf.Sqrt(v * (maximum - minimum) * (peak - minimum));
+        else
+            return maximum - Mathf.Sqrt((1f - v) * (maximum - minimum) * (maximum - peak));
     }
 }

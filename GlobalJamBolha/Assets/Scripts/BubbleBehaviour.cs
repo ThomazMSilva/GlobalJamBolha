@@ -7,8 +7,8 @@ public class BubbleBehaviour : MonoBehaviour
 {
     [SerializeField] private float minVerticalVelocity = .8f;
     [SerializeField] private float maxVerticalVelocity = 1.2f;
-    [SerializeField] private float minBaseHorizontalVelocity = .7f;
-    [SerializeField] private float maxBaseHorizontalVelocity = 1.1f;
+    [SerializeField] private float minBaseHorizontalVelocity = 1.1f;
+    [SerializeField] private float maxBaseHorizontalVelocity = 1.5f;
     [SerializeField] private float oxygenRecovered = 25f;
     [SerializeField] private float minLifetime = 2f;
     [SerializeField] private float maxLifetime = 5f;

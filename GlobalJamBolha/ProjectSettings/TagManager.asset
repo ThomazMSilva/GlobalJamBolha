@@ -50,11 +50,11 @@ TagManager:
   - name: BG_5
     uniqueID: 2019575897
     locked: 0
-  - name: BG_3
-    uniqueID: 2799155123
-    locked: 0
   - name: BG_4
     uniqueID: 1203203185
+    locked: 0
+  - name: BG_3
+    uniqueID: 2799155123
     locked: 0
   - name: BG_2
     uniqueID: 351419181
