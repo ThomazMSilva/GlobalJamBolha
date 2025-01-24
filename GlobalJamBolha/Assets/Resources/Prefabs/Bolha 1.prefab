@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minVerticalVelocity: 1
   maxVerticalVelocity: 1.2
-  minBaseHorizontalVelocity: 1
-  maxBaseHorizontalVelocity: 1.2
+  minBaseHorizontalVelocity: 1.2
+  maxBaseHorizontalVelocity: 1.4
   oxygenRecovered: 25
   minLifetime: 2
   maxLifetime: 5

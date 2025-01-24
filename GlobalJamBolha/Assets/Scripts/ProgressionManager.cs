@@ -5,6 +5,7 @@ namespace Assets.Scripts
 {
     public class ProgressionManager : MonoBehaviour
     {
+        public bool isGamePaused = true;
         [SerializeField] private PlayerLife playerLife;
         [SerializeField] private TextMeshProUGUI distanceValue_TMP;
         public float DistanceRan { get; private set; }
@@ -33,6 +34,8 @@ namespace Assets.Scripts
 
         private void Update()
         {
+            if (isGamePaused) return;
+
             DistanceRan += Time.deltaTime * (BaseMPS * ProgressionMultiplier);
             DistanceRan = Mathf.Min(DistanceRan, maxDistance);
             distanceValue_TMP.text = $"Distancia: {DistanceRan:F0}m";

@@ -21,7 +21,7 @@ namespace Assets.Scripts
             while (true)
             {
                 yield return new WaitForSeconds(Mathf.Lerp(maxSpawnInterval, minSpawnInterval, progressionManager.NormalizedDistance));
-
+                while (progressionManager.isGamePaused) yield return null;
                 PoolManager.Instance.InstantiateFromPool(volcano, transform.position, Quaternion.identity);
             }
         }

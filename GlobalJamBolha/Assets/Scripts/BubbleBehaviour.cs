@@ -38,6 +38,8 @@ public class BubbleBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (progressionManager.isGamePaused) gameObject.SetActive(false);
+
         transform.position = new
             (
                 transform.position.x - (progressionManager.BaseMPS * progressionManager.ProgressionMultiplier * currentRandomHorizontal * Time.deltaTime),

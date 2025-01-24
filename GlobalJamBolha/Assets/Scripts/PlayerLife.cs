@@ -26,6 +26,8 @@ namespace Assets.Scripts
 
                 inInvulnerability ??= StartCoroutine(InvulnerabilityTime());
 
+                if (oldValue > currentHealth) AdministradorSom.Instance.PlayDolphinSound();
+
                 if (currentHealth <= 0) OnPlayerDeath?.Invoke();
             }
         }

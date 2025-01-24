@@ -7,6 +7,8 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_Prefabs;
     [SerializeField] private Transform spawnXPosition;
+    [SerializeField] private float distanceToStart = 10f;
+
     [SerializeField] private float spawnIntervalMin = 1;
     [SerializeField] private float spawnIntervalMax = 4;
     
@@ -36,7 +38,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            while (progressionManager.DistanceRan < 100) yield return null;
+            while (progressionManager.isGamePaused || progressionManager.DistanceRan < distanceToStart) yield return null;
 
             currentSpawnAmountMax = Mathf.Clamp
                 (
