@@ -38,7 +38,7 @@ namespace Assets.Scripts
 
             DistanceRan += Time.deltaTime * (BaseMPS * ProgressionMultiplier);
             DistanceRan = Mathf.Min(DistanceRan, maxDistance);
-            distanceValue_TMP.text = $"Distancia: {DistanceRan:F0}m";
+            distanceValue_TMP.text = $"{DistanceRan:F0}m";
         }
     }
 }

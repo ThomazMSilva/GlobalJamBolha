@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e57dccbfe996ee3449ec7471ec17db42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee42348fcd4a1384387bf6fe6e9c0f19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,4 +125,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 1.65
-  m_Center: {x: 0, y: 0.27, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
