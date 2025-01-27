@@ -1,9 +1,11 @@
+using Assets.Scripts;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private Transform supportRod;
+    private ProgressionManager progressionManager;
     private Vector3 supportRodPosition;
 
     [SerializeField] private float horizontalSpeed = 6f;
@@ -28,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Start()
     {
+        progressionManager = FindAnyObjectByType<ProgressionManager>();
         supportRodPosition = supportRod.position;
         horizontalMinRange = supportRod.position.x - horizontalRange;
         horizontalMaxRange = supportRod.position.x + horizontalRange;
@@ -55,8 +58,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         playerRb.velocity = new
             (
-                horizontalInput * speedMultiplier * horizontalSpeed * Time.fixedDeltaTime, 
-                verticalInput * speedMultiplier * verticalSpeed * Time.fixedDeltaTime,
+                horizontalInput * speedMultiplier * (progressionManager.BaseMPS * progressionManager.ProgressionMultiplier) * horizontalSpeed * Time.fixedDeltaTime, 
+                verticalInput * speedMultiplier * (progressionManager.BaseMPS * progressionManager.ProgressionMultiplier) * verticalSpeed * Time.fixedDeltaTime,
                 0
             );
         velocity = playerRb.velocity;
