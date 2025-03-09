@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using System;
 
 namespace Assets.Scripts
 {
@@ -16,6 +17,8 @@ namespace Assets.Scripts
         public float BaseMPS { get => baseMetersPerSecond; private set { baseMetersPerSecond = value; } }
 
         public float NormalizedDistance {  get; private set; }
+
+        public static event Action OnGameReset;
 
         public float ProgressionMultiplier 
         {
@@ -40,5 +43,13 @@ namespace Assets.Scripts
             DistanceRan = Mathf.Min(DistanceRan, maxDistance);
             distanceValue_TMP.text = $"{DistanceRan:F0}m";
         }
+
+        public void ResetProgression()
+        {
+            isGamePaused = true;
+            DistanceRan = 0;
+            OnGameReset?.Invoke();
+         
+        }    
     }
 }
