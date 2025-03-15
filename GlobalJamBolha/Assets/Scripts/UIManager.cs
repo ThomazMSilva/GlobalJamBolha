@@ -84,12 +84,14 @@ public class UIManager : MonoBehaviour
             pauseCamera.Priority = 20;
             painelPause.SetActive(true);
             progressionManager.isGamePaused = true;
+            aquariumCanvas.SetActive(false);
         }
         else
         {
             pauseCamera.Priority = 0;
             painelPause.SetActive(false);
             progressionManager.isGamePaused = false;
+            aquariumCanvas.SetActive(true);
         }
 
         isPaused = !isPaused;
